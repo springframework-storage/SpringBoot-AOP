@@ -4,33 +4,45 @@ import com.springboot.aop.domain.Board;
 import com.springboot.aop.domain.User;
 import com.springboot.aop.repository.BoardRepository;
 import com.springboot.aop.repository.UserRepository;
-import com.springboot.aop.service.BoardService;
-import com.springboot.aop.service.UserService;
+import com.springboot.aop.service.impl.BoardServiceImpl;
+import com.springboot.aop.service.impl.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sun.tools.jar.CommandLine;
 
 import java.util.List;
 
 @Slf4j
 @SpringBootApplication
 @RestController
+@EnableAspectJAutoProxy // Auto Proxying
 public class AopApplication implements CommandLineRunner {
 
   @Autowired
-  private BoardService boardService;
+  private BoardServiceImpl boardService;
   @Autowired
   private BoardRepository boardRepository;
 
   @Autowired
-  private UserService userService;
+  private UserServiceImpl userService;
   @Autowired
   private UserRepository userRepository;
+
+  /**
+   * 애스펙트 선언 후, Spring 컨테이너의 Bean 으로 등록
+   *
+   * @return
+   */
+  @Bean
+  public Performance performance() {
+    return new Performance();
+  }
 
   @Override
   public void run(String... args) throws Exception {
