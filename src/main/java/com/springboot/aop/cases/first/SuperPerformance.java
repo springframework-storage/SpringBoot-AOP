@@ -1,4 +1,4 @@
-package com.springboot.aop.firstStep;
+package com.springboot.aop.cases.first;
 
 import lombok.extern.slf4j.Slf4j;
 

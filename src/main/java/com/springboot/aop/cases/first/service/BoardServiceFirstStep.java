@@ -1,7 +1,7 @@
-package com.springboot.aop.firstStep.service;
+package com.springboot.aop.cases.first.service;
 
 import com.springboot.aop.domain.Board;
-import com.springboot.aop.firstStep.SuperPerformance;
+import com.springboot.aop.cases.first.SuperPerformance;
 import com.springboot.aop.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
