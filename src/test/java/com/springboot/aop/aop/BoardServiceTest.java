@@ -1,6 +1,7 @@
 package com.springboot.aop.aop;
 
 import com.springboot.aop.service.BoardService;
+import com.springboot.aop.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,10 +15,17 @@ public class BoardServiceTest {
 
   @Autowired
   private BoardService boardService;
+  @Autowired
+  private UserService userService;
 
   @Test
   public void findBoards() throws Exception {
     Assert.assertEquals(boardService.getBoards().size(), 100);
+  }
+
+  @Test
+  public void findUsers() throws Exception {
+    Assert.assertEquals(userService.getUsers().size(), 100);
   }
 
 }
