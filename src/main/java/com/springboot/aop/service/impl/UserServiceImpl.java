@@ -19,4 +19,9 @@ public class UserServiceImpl implements UserService {
     return users;
   }
 
+  @Override
+  public void update(User user) throws Exception {
+    userRepository.save(user);
+  }
+
 }

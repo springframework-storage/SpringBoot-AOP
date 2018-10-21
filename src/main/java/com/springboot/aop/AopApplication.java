@@ -1,5 +1,6 @@
 package com.springboot.aop;
 
+import com.springboot.aop.aspect.Performance;
 import com.springboot.aop.domain.Board;
 import com.springboot.aop.domain.User;
 import com.springboot.aop.repository.BoardRepository;
