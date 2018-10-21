@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 @Slf4j
@@ -67,7 +68,16 @@ public class Performance {
    * - ex) @annotation(org.springframework.transaction.annotation.Transactional): Transactional 어노테이션이 지정된 메소드 전부
    */
 
-  @Around("execution(* com.springboot.aop.service.BoardService.getBoards(..))")
+  /**
+   * '@Pointcut' 어노테이션은 애스펙트에서 마치 변수와 같이 재사용 가능한 포인트컷을 정의할 수 있다.
+   */
+  @Pointcut("execution(* com.springboot.aop.service.BoardService.getBoards(..))")
+  public void getBoards() {}
+
+  @Pointcut("execution(* com.springboot.aop.service.UserService.getUsers(..))")
+  public void getUsers() {}
+
+  @Around("getBoards() || getUsers()")
   public Object calculatePerformanceTime(ProceedingJoinPoint proceedingJoinPoint) {
     Object result = null;
 
